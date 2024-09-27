@@ -47,8 +47,43 @@ function getCurrentTime() {
 setInterval(getCurrentTime, 1000);
 
 // Fetch and display weather data based on the user's location
-navigator.geolocation.getCurrentPosition(position => {
-    fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=imperial`)
+// Function to get location using onboard sensors and fallback to IP address
+function getLocation() {
+    // Try to get location using geolocation API
+    navigator.geolocation.getCurrentPosition(
+        position => {
+            // If successful, retrieve latitude and longitude
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            fetchWeatherData(lat, lon); // Fetch weather data using the obtained coordinates
+        },
+        error => {
+            // If geolocation fails, log the error and use IP-based geolocation
+            console.error("Geolocation error:", error);
+            console.log("Attempting to retrieve location using IP address...");
+
+            // Fetch location data using IP address
+            fetch('https://ipapi.co/json/')
+                .then(res => res.json())
+                .then(data => {
+                    const lat = data.latitude; // Get latitude from IP API response
+                    const lon = data.longitude; // Get longitude from IP API response
+                    fetchWeatherData(lat, lon); // Fetch weather data using the obtained coordinates
+                })
+                .catch(err => {
+                    console.error("Error fetching IP-based location data:", err);
+                    document.getElementById("weather").innerHTML = `
+                        <p>Unable to retrieve location data</p>
+                    `;
+                });
+        }
+    );
+}
+
+// Function to fetch weather data using Scrimba's OpenWeather API based on latitude and longitude
+function fetchWeatherData(lat, lon) {
+    // Fetch weather data from Scrimba's OpenWeather API using the given coordinates
+    fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric`)
         .then(res => {
             if (!res.ok) {
                 throw Error("Weather data not available");
