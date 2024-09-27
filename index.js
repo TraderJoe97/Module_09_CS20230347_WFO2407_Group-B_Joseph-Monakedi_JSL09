@@ -103,19 +103,25 @@ function fetchWeatherData(lat, lon) {
                 <p class="weather-city">${city}</p>
             `;
         })
-        .catch(err => console.error(err));
-});
-
-// Fetch and display the latest developer news
         .catch(err => {
             console.error("Error fetching weather data:", err);
             document.getElementById("weather").innerHTML = `
                 <p>Unable to retrieve weather data</p>
             `;
+        });
+}
+
+// Call the getLocation function to start the process
+getLocation();
+
+
+// Fetch and display the latest developer news
+fetch("https://saurav.tech/NewsAPI/top-headlines/category/technology/us.json")
     .then(res => res.json())
     .then(data => {
         let newsHtml = '<h2>Developer News</h2>';
-        data.articles.slice(0, 5).forEach(article => {
+        const  articlesNum = 5; //number of articles to display
+        data.articles.slice(0, articlesNum).forEach(article => {
             newsHtml += `
                 <div>
                     <a href="${article.url}" target="_blank">${article.title}</a>
