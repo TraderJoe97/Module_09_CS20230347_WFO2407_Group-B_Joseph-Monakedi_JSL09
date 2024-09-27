@@ -91,18 +91,27 @@ function fetchWeatherData(lat, lon) {
             return res.json();
         })
         .then(data => {
+            // Extract weather details from the API response
             const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+            const temp = Math.round(data.main.temp);
+            const city = data.name;
+
+            // Display weather information
             document.getElementById("weather").innerHTML = `
-                <img src=${iconUrl} />
-                <p class="weather-temp">${Math.round(data.main.temp)}º</p>
-                <p class="weather-city">${data.name}</p>
+                <img src="${iconUrl}" />
+                <p class="weather-temp">${temp}ºc</p>
+                <p class="weather-city">${city}</p>
             `;
         })
         .catch(err => console.error(err));
 });
 
 // Fetch and display the latest developer news
-fetch("https://saurav.tech/NewsAPI/top-headlines/category/technology/us.json")
+        .catch(err => {
+            console.error("Error fetching weather data:", err);
+            document.getElementById("weather").innerHTML = `
+                <p>Unable to retrieve weather data</p>
+            `;
     .then(res => res.json())
     .then(data => {
         let newsHtml = '<h2>Developer News</h2>';
