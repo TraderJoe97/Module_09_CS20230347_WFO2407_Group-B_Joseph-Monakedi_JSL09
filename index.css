@@ -123,6 +123,10 @@ p.weather-temp {
 .bottom-right a:hover {
     text-decoration: underline;
 }
+/* Hide scrollbar for news feed */
+.bottom-right::-webkit-scrollbar{
+    display: none;
+}
 
 /* Bottom-left styling for photographer */
 .bottom-left {
