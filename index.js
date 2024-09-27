@@ -30,9 +30,9 @@ cryptoArray.forEach(crypto => {
             cryptoDiv.innerHTML = `
                 <img src=${data.image.small} />
                 <span>${data.name}</span>
-                <p>🎯: $${data.market_data.current_price.usd}</p>
-                <p>👆: $${data.market_data.high_24h.usd}</p>
-                <p>👇: $${data.market_data.low_24h.usd}</p>
+                <p>Current Price: R ${data.market_data.current_price.zar}</p>
+                <p><span style="color: #26bba4;">▲</span>: R ${data.market_data.high_24h.zar}</p>
+                <p><span style="color: #ff6b6b;">▼</span>: R ${data.market_data.low_24h.zar}</p>
             `;
             cryptoContainer.appendChild(cryptoDiv);
         })
