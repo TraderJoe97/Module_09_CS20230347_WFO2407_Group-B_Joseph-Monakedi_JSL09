@@ -1,0 +1,124 @@
+* {
+    box-sizing: border-box;
+}    
+
+body {
+    margin: 0;
+    background: no-repeat center center fixed; 
+    background-size: cover;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    text-shadow: 0px 0px 20px #242424;
+}
+
+main {
+    padding: 15px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers vertically */
+    align-items: center; /* Centers horizontally */
+    position: relative;
+}
+
+div.top {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 15px;
+}
+
+h1.time {
+    text-align: center;
+    font-size: 3rem;
+}
+
+div#crypto-top {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.crypto-div {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 8px;
+    min-width: 150px;
+    text-align: center;
+}
+
+.crypto-div img {
+    width: 30px;
+    height: 30px;
+}
+
+.crypto-div span, .crypto-div p {
+    margin: 5px 0;
+}
+
+div#weather {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+div#weather > img {
+    width: 70px;
+}
+
+.bottom-left {
+    position: absolute;
+    bottom: 10px;
+    left: 15px;
+}
+
+.bottom-right {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    font-size: 0.9rem;
+    max-width: 30%;
+}
+
+p.weather-city {
+    text-align: right;
+}
+
+p.weather-temp {
+    font-size: 1.7rem;
+}
+
+/* Bottom-right news feed with glassmorphism */
+.bottom-right {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    font-size: 0.9rem;
+    max-width: 30%;
+    max-height: 50vh; /* Limit height to 50% of the viewport */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+    backdrop-filter: blur(10px); /* Apply blur to the background */
+    border-radius: 10px; /* Rounded corners */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    color: white;
+}
+
+/* Inside the glass pane, links should stand out */
+.bottom-right a {
+    color: #00e1ff;
+    text-decoration: none;
+}
+
+.bottom-right a:hover {
+    text-decoration: underline;
+}
