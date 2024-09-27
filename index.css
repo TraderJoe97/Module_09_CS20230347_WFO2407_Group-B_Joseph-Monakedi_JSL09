@@ -52,8 +52,9 @@ div#crypto-top {
     padding: 5px; 
     border-radius: 5px; 
     min-width: 100px; 
-    text-align: center;
+    text-align: start;
     font-size: 0.8rem; 
+    
 }
 
 .crypto-div img {
