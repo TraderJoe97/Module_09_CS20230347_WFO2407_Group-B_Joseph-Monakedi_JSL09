@@ -103,14 +103,14 @@ function getLocation() {
 }
 getLocation();
 
-// Fetch and display the latest developer news
-async function fetchDeveloperNews() {
+// Fetch and display the latest tech news
+async function fetchNews() {
     try {
         const res = await fetch("https://saurav.tech/NewsAPI/top-headlines/category/technology/us.json");
         const data = await res.json();
 
-        let newsHtml = '<h2>Developer News</h2>';
-        const articlesNum = 5; // number of articles to display
+        let newsHtml = '<h2>Tech News</h2>';
+        const articlesNum = 10;  // number of articles to display
         data.articles.slice(0, articlesNum).forEach(article => {
             newsHtml += `
                 <div>
@@ -124,4 +124,4 @@ async function fetchDeveloperNews() {
         console.error(err);
     }
 }
-fetchDeveloperNews();
+fetchNews();
