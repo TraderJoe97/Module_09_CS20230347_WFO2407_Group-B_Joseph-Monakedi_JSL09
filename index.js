@@ -1,13 +1,13 @@
 // Fetch and display the background image and photographer's name
 async function fetchBackgroundImage() {
     try {
-        const res = await fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature");
+        const res = await fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=space");
         const data = await res.json();
         document.body.style.backgroundImage = `url(${data.urls.regular})`;
-        document.getElementById("author").textContent = `By: ${data.user.name}`;
+        document.getElementById("author").textContent = `Photo by ${data.user.name}`;
     } catch (err) {
         document.body.style.backgroundImage = `url(https://images.unsplash.com/photo-1560008511-11c63416e52d)`;
-        document.getElementById("author").textContent = `By: Dodi Achmad`;
+        document.getElementById("author").textContent = `Photo by Dodi Achmad`;
     }
 }
 fetchBackgroundImage();
