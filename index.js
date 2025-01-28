@@ -1,7 +1,7 @@
 // Fetch and display the background image and photographer's name
 async function fetchBackgroundImage() {
     try {
-        const res = await fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=space");
+        const res = await fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature");
         const data = await res.json();
         document.body.style.backgroundImage = `url(${data.urls.regular})`;
         document.getElementById("author").textContent = `Photo by ${data.user.name}`;
